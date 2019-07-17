@@ -23,17 +23,15 @@ router.get("/scrape", function(req, res) {
     axios.get("https://www.theonion.com/").then(function(response) {
         var links = [];
       var $ = cheerio.load(response.data);
-      $("header a").each(function(i, element) {
+      $("article").each(function(i, element) {
         var result = {};
-        result.title = $(this)
-          .text();
-        result.link = $(this)
-          .attr("href");
-          //console.log(result);
-          if (result.link == "" || result.link == "#" || links.indexOf(result.link) != -1){
-              return;
-          }
-          links.push(result.link);
+        result.title = $(this).find(".js_link h1").text();
+        result.link = $(this).find(".js_link").attr("href");
+          console.log(result);
+        //   if (result.link == "" || result.link == "#" || links.indexOf(result.link) != -1){
+        //       return;
+        //   }
+        //   links.push(result.link);
         db.Article.create(result)
           .then(function(dbArticle) {
             //console.log(dbArticle);
@@ -43,6 +41,7 @@ router.get("/scrape", function(req, res) {
             return res.redirect("/");
           });
       });
+
       res.redirect("/");
     });
   });
