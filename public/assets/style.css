@@ -102,6 +102,10 @@ html {
   .card .card-header .btn.delete {
     right: 160px;
   }
+
+  .card .card-header .btn.note {
+    right: 300px;
+  }
   
   .card .card-body {
     font-size: 16px;
@@ -163,8 +167,5 @@ html {
     margin: 5px;
   }
   
-  .note.list-group-item .btn {
-    position: relative;
-    bottom: 10px;
-  }
+
   
