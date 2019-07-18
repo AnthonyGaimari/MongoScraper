@@ -10,6 +10,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
+//mongodb://<dbuser>:<dbpassword>@ds351987.mlab.com:51987/heroku_0nw1t8jh
+
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/onionArticles";
 //console.log(MONGODB_URI);
 mongoose.connect(MONGODB_URI);
