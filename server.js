@@ -10,10 +10,10 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
-// transition to heroku
+// transition to heroku  mongodb://localhost/onionArticles
 //mongodb://<dbuser>:<dbpassword>@ds253017.mlab.com:53017/heroku_7dqvt44n
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/onionArticles";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds253017.mlab.com:53017/heroku_7dqvt44n";
 //console.log(MONGODB_URI);
 mongoose.connect(MONGODB_URI);
 
